@@ -2,8 +2,7 @@ import { LinkPreview } from "@/components/ui/link-preview";
 
 export default function Home() {
   return (
-    // <div className="flex items-center justify-center flex-col p-4">
-    <>
+    <main>
       <section
         id="section1"
         className="flex items-center justify-center flex-col gap-4 min-h-screen"
@@ -28,7 +27,6 @@ export default function Home() {
       >
         section 4
       </section>
-      {/* </div> */}
-    </>
+    </main>
   );
 }

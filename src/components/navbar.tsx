@@ -3,25 +3,27 @@
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { Globe, Zap, Mail, Smile } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { Button } from "./ui/button"
 
 interface NavItem {
   icon: typeof Globe
   id: string
   label: string
+  color: string
 }
 
 const navItems: NavItem[] = [
-  { icon: Globe, id: "section1", label: "World" },
-  { icon: Zap, id: "section2", label: "Flash" },
-  { icon: Mail, id: "section3", label: "Mail" },
-  { icon: Smile, id: "section4", label: "Smile" },
+  { icon: Globe, id: "section1", label: "World", color: "#f00" },
+  { icon: Zap, id: "section2", label: "Flash", color: "#0f0" },
+  { icon: Mail, id: "section3", label: "Mail", color: "#0ff" },
+  { icon: Smile, id: "section4", label: "Smile", color: "#00f" },
 ]
 
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState("section1")
 
   useEffect(() => {
+    setActiveSection(navItems[1].id)
     const observers: IntersectionObserver[] = []
 
     // Create an observer for each section
@@ -53,22 +55,26 @@ export default function Navbar() {
     <div className="fixed top-6 left-1/2 -translate-x-1/2">
       <nav className="relative flex items-center gap-2 rounded-md backdrop-blur-sm bg-white/20 p-2 shadow-lg">
         {navItems.map(({ icon: Icon, id, label }) => (
-          <button
+          <Button
+            size="icon"
+            variant="outline"
+            className="relative"
             key={id}
             onClick={() => {
               document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
             }}
-            className={cn(
-              "relative rounded-full p-3 transition-colors hover:bg-gray-100",
-              activeSection === id ? "text-gray-950" : "text-gray-200",
-            )}
           >
-            <Icon className="h-5 w-5" />
+            <Icon
+              className="h-7 w-7"
+            />
             <span className="sr-only">{label}</span>
             {activeSection === id && (
               <motion.span
                 layoutId="bubble"
-                className="absolute z-10 bg-red-500 h-1 w-2/3 left-2 -translate-x-1/2 -bottom-2 rounded-full"
+                className="absolute z-10 h-1 w-2/3 left-2 -translate-x-1/2 -bottom-[9px] rounded-full"
+                style={{
+                  backgroundColor: navItems.find((item) => item.id === id)?.color,
+                }}
                 transition={{
                   type: "spring",
                   stiffness: 380,
@@ -76,7 +82,7 @@ export default function Navbar() {
                 }}
               />
             )}
-          </button>
+          </Button>
         ))}
       </nav>
     </div>
