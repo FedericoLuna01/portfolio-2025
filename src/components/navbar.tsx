@@ -52,7 +52,7 @@ export default function Navbar() {
   }, [])
 
   return (
-    <div className="fixed top-6 left-1/2 -translate-x-1/2">
+    <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
       <nav className="relative flex items-center gap-2 rounded-md backdrop-blur-sm bg-white/20 p-2 shadow-lg">
         {navItems.map(({ icon: Icon, id, label }) => (
           <Button
@@ -71,10 +71,7 @@ export default function Navbar() {
             {activeSection === id && (
               <motion.span
                 layoutId="bubble"
-                className="absolute z-10 h-1 w-2/3 left-2 -translate-x-1/2 -bottom-[9px] rounded-full"
-                style={{
-                  backgroundColor: navItems.find((item) => item.id === id)?.color,
-                }}
+                className="absolute z-10 h-1 w-2/3 left-2 -translate-x-1/2 -bottom-[9px] rounded-full bg-white"
                 transition={{
                   type: "spring",
                   stiffness: 380,

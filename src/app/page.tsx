@@ -1,18 +1,14 @@
-import { LinkPreview } from "@/components/ui/link-preview";
+import Hero from "@/components/hero";
 
 export default function Home() {
   return (
     <main>
-      <section
-        id="section1"
-        className="flex items-center justify-center flex-col gap-4 min-h-screen"
-      >
-        section 1
-      </section>
+      <Hero />
       <section
         id="section2"
-        className="flex items-center justify-center flex-col gap-4 min-h-screen"
+        className="flex items-center justify-center flex-col gap-4 min-h-screen relative"
       >
+        <div className="absolute inset-0 -z-10 h-full w-full transform rotate-180 items-center px-5 py-24 [background:radial-gradient(165%_165%_at_50%_10%,#171717_40%,#63e_100%)]"></div>
         section 2
       </section>
       <section
