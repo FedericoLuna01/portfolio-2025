@@ -23,13 +23,13 @@ const Hero = () => {
   const filter = useTransform(scrollYProgress, [0, 0.5], ["blur(0px)", "blur(5px)"])
   const scale = useTransform(scrollYProgress, [0, 1.2], [1, .6])
 
-  function setVH() {
-    const vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-  }
+  // function setVH() {
+  //   const vh = window.innerHeight * 0.01;
+  //   document.documentElement.style.setProperty('--vh', `${vh}px`);
+  // }
 
-  window.addEventListener('resize', setVH);
-  window.addEventListener('load', setVH);
+  // window.addEventListener('resize', setVH);
+  // window.addEventListener('load', setVH);
 
   return (
     <motion.section
