@@ -1,12 +1,8 @@
 import type { Metadata } from "next";
-import { Figtree } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
-import Footer from "@/components/footer";
-
-const figtree = Figtree({
-  subsets: ["latin"],
-})
+import { figtree } from "@/styles/fonts";
+import { ReactLenis } from "@/utils/lenis"
 
 export const metadata: Metadata = {
   title: "Federico Luna | Desarrollador web",
@@ -18,15 +14,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
   return (
     <html lang="es">
-      <body
-        className={`${figtree.className} antialiased dark`}
-      >
-        <Navbar />
-        {children}
-        <Footer />
-      </body>
+      <ReactLenis root>
+        <body
+          className={`${figtree.className} antialiased dark`}
+        >
+          <Navbar />
+          {children}
+        </body>
+      </ReactLenis>
     </html>
   );
 }

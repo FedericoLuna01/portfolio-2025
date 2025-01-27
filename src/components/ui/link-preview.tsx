@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 type LinkPreviewProps = {
   children: React.ReactNode;
   src: string;
-  url: string;
+  url?: string;
   className?: string;
   width?: number;
   height?: number;
@@ -79,12 +79,11 @@ export const LinkPreview = ({
       >
         <HoverCardPrimitive.Trigger
           onMouseMove={handleMouseMove}
-          className={cn("text-black dark:text-white", className)}
+          className={cn(className)}
           href={url}
         >
           {children}
         </HoverCardPrimitive.Trigger>
-
         <HoverCardPrimitive.Content
           className="[transform-origin:var(--radix-hover-card-content-transform-origin)]"
           side="top"
@@ -111,22 +110,39 @@ export const LinkPreview = ({
                   x: translateX,
                 }}
               >
-                <Link
-                  href={url}
-                  className="block p-1 bg-white border-2 border-transparent shadow rounded-xl hover:border-neutral-200 dark:hover:border-neutral-800"
-                  style={{ fontSize: 0 }}
-                >
-                  <Image
-                    src={src}
-                    width={width}
-                    height={height}
-                    quality={quality}
-                    layout={layout}
-                    priority={true}
-                    className="rounded-lg"
-                    alt="preview image"
-                  />
-                </Link>
+                {
+                  url ? (
+                    <Link
+                      href={url}
+                      className="block p-1 bg-white border-2 border-transparent shadow rounded-xl hover:border-neutral-200 dark:hover:border-neutral-800"
+                      style={{ fontSize: 0 }}
+                    >
+                      <Image
+                        src={src}
+                        width={width}
+                        height={height}
+                        quality={quality}
+                        layout={layout}
+                        priority={true}
+                        className="rounded-lg"
+                        alt="preview image"
+                      />
+                    </Link>
+                  ) : (
+                    <div className="block p-1 bg-white border-2 border-transparent shadow rounded-xl hover:border-neutral-200 dark:hover:border-neutral-800">
+                      <Image
+                        src={src}
+                        width={width}
+                        height={height}
+                        quality={quality}
+                        layout={layout}
+                        priority={true}
+                        className="rounded-lg"
+                        alt="preview image"
+                      />
+                    </div>
+                  )
+                }
               </motion.div>
             )}
           </AnimatePresence>

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
-import { Globe, Zap, Mail, Smile } from "lucide-react"
+import { Globe, Zap, BriefcaseBusinessIcon, SendIcon, CircleUserIcon } from "lucide-react"
 import { Button } from "./ui/button"
 
 interface NavItem {
@@ -13,18 +13,25 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { icon: Globe, id: "section1", label: "World", color: "#f00" },
-  { icon: Zap, id: "section2", label: "Flash", color: "#0f0" },
-  { icon: Mail, id: "section3", label: "Mail", color: "#0ff" },
-  { icon: Smile, id: "section4", label: "Smile", color: "#00f" },
+  { icon: Zap, id: "home", label: "Flash", color: "#f00" },
+  { icon: CircleUserIcon, id: "about", label: "User", color: "#0f0" },
+  { icon: BriefcaseBusinessIcon, id: "section3", label: "Briefcase", color: "#0ff" },
+  { icon: SendIcon, id: "contact", label: "Send Icon", color: "#00f" },
 ]
 
 export default function Navbar() {
-  const [activeSection, setActiveSection] = useState("section1")
+  const [activeSection, setActiveSection] = useState("home")
+  const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
     setActiveSection(navItems[1].id)
     const observers: IntersectionObserver[] = []
+
+    const handleScroll = () => {
+      setIsVisible(window.scrollY > 0)
+    }
+
+    window.addEventListener("scroll", handleScroll)
 
     // Create an observer for each section
     navItems.forEach(({ id }) => {
@@ -48,11 +55,12 @@ export default function Navbar() {
 
     return () => {
       observers.forEach((observer) => observer.disconnect())
+      window.removeEventListener("scroll", handleScroll)
     }
   }, [])
 
   return (
-    <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
+    <div className={`fixed left-1/2 -translate-x-1/2 z-50 transition-top duration-300 ${isVisible ? 'top-8' : '-top-[10%]'}`}>
       <nav className="relative flex items-center gap-2 rounded-md backdrop-blur-sm bg-white/20 p-2 shadow-lg">
         {navItems.map(({ icon: Icon, id, label }) => (
           <Button
