@@ -42,18 +42,8 @@ const Hero = () => {
     >
       <motion.div
         style={{ filter, scale }}
-        className="bg-[#e2e2e2] text-black rounded-xl p-5 sm:p-10 lg:p-24 flex justify-between flex-col fixed inset-0 m-4 sm:m-8"
+        className="bg-[#e2e2e2] text-black rounded-xl p-5 sm:p-10 lg:p-24 flex justify-between flex-col fixed inset-0 m-4 sm:m-8 "
       >
-        <Image
-          src="/openToWork.png"
-          alt="Open to work"
-          width={250}
-          height={250}
-          className="absolute animate-spin bottom-1/2 md:bottom-5 left-1/2"
-          style={{
-            animationDuration: "8s",
-          }}
-        />
         <div className="flex items-center justify-between w-full">
           <p className={`text-3xl font-bold uppercase ${accent.className}`}>Fede.</p>
           <div className="flex items-center gap-4">
