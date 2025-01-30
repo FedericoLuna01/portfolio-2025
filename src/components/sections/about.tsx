@@ -2,13 +2,11 @@
 import Image from 'next/image'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { accent } from '@/styles/fonts'
-import { LinkPreview } from '../ui/link-preview'
 import { useRef } from 'react'
 import { Button } from '../ui/button'
 import { TextAnimate } from '../ui/text-animate'
 
 const About = () => {
-
   const ref = useRef(null)
 
   const { scrollYProgress } = useScroll({
@@ -37,23 +35,10 @@ const About = () => {
               Soy Federico Luna, desarrollador web fullstack.
             </TextAnimate>
           </h1>
-          <div className='text-xl md:text-3xl mt-4 text-[#e2e2e2]'>
-            Tengo 22 años y soy de{" "}
-            <LinkPreview
-              src="/y.jpeg"
-              className='font-bold text-white'
-            >
-              Zavalla, Argentina
-            </LinkPreview>
-            , actualmente estudio Tecnicatura en Programación en la{" "}
-            <LinkPreview
-              src="/logo-utn-siglas.png"
-              className='font-bold text-white'
-            >
-              Universidad Tecnológica Nacional.
-            </LinkPreview>
-          </div>
-          <div className='mt-4 flex gap-2 flex-col'>
+          <p className='text-xl md:text-3xl mt-4 text-[#e2e2e2]'>
+            Tengo 22 años y soy de Zavalla, Argentina, actualmente estudio Tecnicatura en Programación en la Universidad Tecnológica Nacional.
+          </p>
+          <div className='mt-4 flex gap-2 flex-col items-center xl:items-start'>
             <p className='text-xl'>Te interesa saber mas sobre mi?</p>
             <Button className='w-fit'
               asChild>
