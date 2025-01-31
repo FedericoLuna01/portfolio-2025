@@ -1,4 +1,3 @@
-import React from 'react'
 import { Button } from '@/components/ui/button'
 import { accent } from '@/styles/fonts'
 import { data } from '@/data/data'
@@ -21,8 +20,11 @@ const Contact = () => {
               <p className={`${accent.className} uppercase text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-9xl font-bold`}>Trabajemos juntos</p>
               <Button
                 className='text-xl md:text-2xl lg:text-3xl px-8 py-6'
+                asChild
               >
-                Contactame
+                <a href="mailto:fede29833@gmail.com" target='_blank'>
+                  Contactame
+                </a>
               </Button>
               <div className='flex gap-2 md:gap-4 flex-col lg:flex-row'>
                 {

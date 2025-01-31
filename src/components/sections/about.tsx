@@ -74,10 +74,10 @@ const About = () => {
             <p className='text-base md:text-xl text-white/80 leading-tight'>Años de <br /> Experiencia</p>
           </motion.div>
           <Image
-            src="/yo-bw.jpeg"
+            src="/federico-luna.webp"
             alt="Federico Luna"
-            width={350}
             height={350}
+            width={350}
             className='rounded-xl shadow-2xl ring-4 ring-border'
           />
         </div>

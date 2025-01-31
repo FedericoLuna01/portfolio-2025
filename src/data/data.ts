@@ -17,12 +17,12 @@ export const data = {
     },
     {
       name: "LinkedIn",
-      url: "https://www.linkedin.com/in/federico-luna-7b2b3b1b6/",
+      url: "https://www.linkedin.com/in/federico-luna-dev",
       icon: LinkedInIcon
     },
     {
       name: "X",
-      url: "#",
+      url: "https://x.com/FedericoLunaDev",
       icon: XIcon
     },
     {
