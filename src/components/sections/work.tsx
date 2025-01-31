@@ -6,6 +6,7 @@ import { useScroll, useTransform, motion } from "framer-motion"
 import { MoveUpRightIcon } from "lucide-react"
 import { useRef, useState } from "react"
 import { LinkPreview } from "../ui/link-preview"
+import { data, Project } from "@/data/data"
 
 const Work = () => {
   const [selected, setSelected] = useState("")
@@ -38,20 +39,32 @@ const Work = () => {
               </h3>
               <div className="flex items-center xl:items-start justify-center gap-y-10 flex-col">
                 {
-                  PROJECTS.map((project, index) => (
+                  data.projects.map((project, index) => (
                     <div
                       key={index}
                     >
                       <div>
-                        <a
-                          href="#"
-                          target="_blank"
-                          className="flex items-center justify-start gap-1 relative w-fit group"
-                        >
-                          <span className="w-full absolute h-[2px] bg-muted-foreground bottom-0" />
-                          <h4 className="font-bold text-xl md:text-2xl group-hover:brightness-90">{project.title}</h4>
-                          <MoveUpRightIcon className="w-4 h-4 group-hover:brightness-90" />
-                        </a>
+                        {
+                          project.url ? (
+                            <a
+                              href={project.url || ""}
+                              target="_blank"
+                              className="flex items-center justify-start gap-1 relative w-fit group"
+                            >
+                              <span className="w-full absolute h-[2px] bg-muted-foreground bottom-0" />
+                              <h4 className="font-bold text-xl md:text-2xl group-hover:brightness-90">{project.title}</h4>
+                              <MoveUpRightIcon className="w-4 h-4 group-hover:brightness-90" />
+                            </a>
+                          ) : (
+                            <div
+                              className="flex items-center justify-start gap-1 relative w-fit group"
+                            >
+                              <span className="w-full absolute h-[2px] bg-muted-foreground bottom-0" />
+                              <h4 className="font-bold text-xl md:text-2xl group-hover:brightness-90">{project.title}</h4>
+                            </div>
+                          )
+                        }
+
                         <p className="text-muted-foreground">
                           {project.description}
                         </p>
@@ -135,8 +148,8 @@ const Work = () => {
 export default Work
 
 const Modal = ({ selected, setSelected }: {
-  selected: typeof PROJECTS[0]["images"][0]
-  setSelected: (selected: typeof PROJECTS[0]["images"][0]) => void
+  selected: Project["images"][number]
+  setSelected: (selected: Project["images"][number]) => void
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   useOutsideClick(ref, () => setSelected(""))
@@ -167,35 +180,3 @@ const Modal = ({ selected, setSelected }: {
     </div>
   )
 }
-
-const PROJECTS = [
-  {
-    id: 1,
-    title: "Plato",
-    description: "Menú digital para restaurantes",
-    images: [
-      "/carta-1.webp",
-      "/allnighter-1.webp",
-      "/allnighter-1.webp",
-    ]
-  },
-  {
-    id: 2,
-    title: "Plato",
-    description: "Menú digital para restaurantes",
-    images: [
-      "/carta-1.webp",
-      "/allnighter-1.webp",
-    ]
-  },
-  {
-    id: 3,
-    title: "Plato",
-    description: "Menú digital para restaurantes",
-    images: [
-      "/carta-1.webp",
-      "/allnighter-1.webp",
-    ]
-  },
-
-]
