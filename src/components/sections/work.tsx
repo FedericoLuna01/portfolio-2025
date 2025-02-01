@@ -22,7 +22,9 @@ const Work = () => {
 
   return (
     <>
-      <Modal selected={selected} setSelected={setSelected} />
+      <Modal
+        selected={selected} setSelected={setSelected}
+      />
       <motion.section
         id="section3"
         className="min-h-screen bg-[#e2e2e2] relative flex items-center justify-center"
@@ -79,7 +81,10 @@ const Work = () => {
                               width={200}
                               height={100}
                               alt="Plato"
-                              className={`rounded-md shadow-md border-border border hover:cursor-pointer hover:shadow-zinc-700 transition-shadow duration-200 ${index > 0 ? "md:-ml-12 -mt-4 md:mt-0" : ""} ${index % 2 === 0 ? "rotate-3" : "-rotate-3"}`}
+                              className={`rounded-md shadow-md border-border border hover:cursor-pointer hover:shadow-zinc-700 transition-shadow duration-200 ${index > 0 ? "md:-ml-12 -mt-4 md:mt-0" : ""}`}
+                              style={{
+                                rotate: index % 2 === 0 ? 3 : -3,
+                              }}
                               onClick={() => setSelected(image)}
                             />
                           ))
@@ -149,7 +154,7 @@ export default Work
 
 const Modal = ({ selected, setSelected }: {
   selected: Project["images"][number]
-  setSelected: (selected: Project["images"][number]) => void
+  setSelected: (selected: Project["images"][number]) => void,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   useOutsideClick(ref, () => setSelected(""))

@@ -8,9 +8,6 @@ import { Button } from "@/components/ui/button";
 import { TextAnimate } from "../ui/text-animate";
 
 const Hero = () => {
-  const month = new Date().toLocaleString('default', { month: 'long' });
-  const year = new Date().getFullYear();
-
   const targetRef = useRef<HTMLDivElement>(null)
 
   const { scrollYProgress } = useScroll({
@@ -47,7 +44,7 @@ const Hero = () => {
           <p className={`text-3xl font-bold uppercase ${accent.className}`}>Fede.</p>
           <div className="flex items-center gap-4">
             <div className="bg-white py-1 pr-[.75rem] pl-4 rounded-full hidden md:flex items-center gap-2 shadow-lg border border-background/30">
-              <p>Disponible para <span className="font-bold">{month} {year}</span></p>
+              <p>Disponible para <span className="font-bold">nuevos proyectos</span></p>
               <div className="bg-green-500 animate-pulse size-3 rounded-full" />
             </div>
             <div>
@@ -94,7 +91,7 @@ const Hero = () => {
               </TextAnimate>
             </div>
             <div className="bg-white py-1 pr-[.75rem] pl-4 rounded-full flex md:hidden items-center gap-2 shadow-lg border border-background/30 w-fit">
-              <p>Disponible para <span className="font-bold">{month} {year}</span></p>
+              <p>Disponible para <span className="font-bold">nuevos proyectos</span></p>
               <div className="bg-green-500 animate-pulse size-3 rounded-full" />
             </div>
           </div>
