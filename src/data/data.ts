@@ -34,17 +34,6 @@ export const data = {
   projects: [
     {
       id: 1,
-      title: "Plato",
-      description: "Menú digital para restaurantes",
-      images: [
-        "/plato-1.webp",
-        "/plato-2.webp",
-        "/plato-3.webp",
-      ],
-      url: "https://platomenu.com"
-    },
-    {
-      id: 2,
       title: "Cuppy",
       description: "Es mi agencia de diseño y desarrollo web",
       images: [
@@ -53,7 +42,37 @@ export const data = {
       url: "https://cuppyagenciaweb.com"
     },
     {
+      id: 2,
+      title: "Vesper x Fede",
+      description: "Tema personalizado en base a Vesper",
+      images: [
+        "/vesperxfede.webp"
+      ],
+      url: "https://github.com/FedericoLuna01/vesper-fede"
+    },
+    {
       id: 3,
+      title: "YT Layout Customizer",
+      description: "Extensión de Chrome para personalizar la interfaz de YouTube",
+      images: [
+        "/yt-layout-customizer-1.webp",
+        "/yt-layout-customizer-2.webp",
+        "/yt-layout-customizer-3.webp",
+      ],
+      url: "https://github.com/FedericoLuna01/yt-layout-customizer"
+    },
+    {
+      id: 4,
+      title: "Plato",
+      description: "Menú digital para restaurantes",
+      images: [
+        "/plato-1.webp",
+        "/plato-2.webp",
+        "/plato-3.webp",
+      ],
+    },
+    {
+      id: 5,
       title: "E-commerce CMS",
       description: "CMS para e-commerce",
       images: [

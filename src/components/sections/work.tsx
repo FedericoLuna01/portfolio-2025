@@ -7,6 +7,7 @@ import { MoveUpRightIcon } from "lucide-react"
 import { useRef, useState } from "react"
 import { LinkPreview } from "../ui/link-preview"
 import { data, Project } from "@/data/data"
+import { cn } from "@/lib/utils"
 
 const Work = () => {
   const [selected, setSelected] = useState("")
@@ -80,8 +81,10 @@ const Work = () => {
                               src={image}
                               width={200}
                               height={100}
-                              alt="Plato"
-                              className={`rounded-md shadow-md border-border border hover:cursor-pointer hover:shadow-zinc-700 transition-shadow duration-200 ${index > 0 ? "md:-ml-12 -mt-4 md:mt-0" : ""}`}
+                              alt={`Imagen del proyecto ${project.title}`}
+                              className={cn("rounded-md shadow-md border-border border hover:cursor-pointer hover:shadow-zinc-700 transition-shadow duration-200", {
+                                "md:-ml-12 -mt-4 md:mt-0": index > 0,
+                              })}
                               style={{
                                 rotate: index % 2 === 0 ? 3 : -3,
                               }}
