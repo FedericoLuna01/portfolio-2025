@@ -2,10 +2,9 @@
 
 import { accent } from "@/styles/fonts"
 import { useOutsideClick } from "@/utils/use-outside-click"
-import { useScroll, useTransform, motion } from "framer-motion"
+import { useScroll, useTransform, motion } from "motion/react"
 import { MoveUpRightIcon } from "lucide-react"
 import { useRef, useState } from "react"
-import { LinkPreview } from "../ui/link-preview"
 import { data, Project } from "@/data/data"
 import { cn } from "@/lib/utils"
 
@@ -35,115 +34,37 @@ const Work = () => {
           style={{ borderRadius, marginLeft: margin, marginRight: margin }}
           className="bg-background w-full h-full min-h-screen"
         >
-          <div className="container mx-auto grid gap-y-32 xl:gap-y-0 grid-cols-1 xl:grid-cols-2 h-full px-4 py-20 pb-36 xl:pt-0 xl:pb-20">
-            <div className="h-full">
+          <div className="container mx-auto h-full px-4 py-20 pb-36 gap-y-20 xl:gap-y-0 xl:pt-0 xl:pb-20 grid grid-cols-1 xl:grid-cols-2">
+            <div>
               <h3 className={`text-2xl md:text-5xl font-bold text-center uppercase ${accent.className} pb-5`}>
                 Proyectos <br />recientes
               </h3>
               <div className="flex items-center xl:items-start justify-center gap-y-10 flex-col">
                 {
                   data.projects.map((project, index) => (
-                    <div
+                    <ProjectItem
+                      project={project}
                       key={index}
-                    >
-                      <div>
-                        {
-                          project.url ? (
-                            <a
-                              href={project.url || ""}
-                              target="_blank"
-                              className="flex items-center justify-start gap-1 relative w-fit group"
-                            >
-                              <span className="w-full absolute h-[2px] bg-muted-foreground bottom-0" />
-                              <h4 className="font-bold text-xl md:text-2xl group-hover:brightness-90">{project.title}</h4>
-                              <MoveUpRightIcon className="w-4 h-4 group-hover:brightness-90" />
-                            </a>
-                          ) : (
-                            <div
-                              className="flex items-center justify-start gap-1 relative w-fit group"
-                            >
-                              <span className="w-full absolute h-[2px] bg-muted-foreground bottom-0" />
-                              <h4 className="font-bold text-xl md:text-2xl group-hover:brightness-90">{project.title}</h4>
-                            </div>
-                          )
-                        }
-
-                        <p className="text-muted-foreground">
-                          {project.description}
-                        </p>
-                      </div>
-                      <div className="flex flex-col md:flex-row items-center gap-2 mt-3">
-                        {
-                          project.images.map((image, index) => (
-                            <motion.img
-                              layoutId={image}
-                              key={index}
-                              src={image}
-                              width={200}
-                              height={100}
-                              alt={`Imagen del proyecto ${project.title}`}
-                              className={cn("rounded-md shadow-md border-border border hover:cursor-pointer hover:shadow-zinc-700 transition-shadow duration-200", {
-                                "md:-ml-12 -mt-4 md:mt-0": index > 0,
-                              })}
-                              style={{
-                                rotate: index % 2 === 0 ? 3 : -3,
-                              }}
-                              onClick={() => setSelected(image)}
-                            />
-                          ))
-                        }
-                      </div>
-                    </div>
+                      setSelected={setSelected}
+                    />
                   ))
                 }
               </div>
             </div>
-            <div className="sticky top-28 h-fit">
-              <div className="flex items-center justify-center flex-col text-center">
-                <h3 className={`text-2xl md:text-5xl font-bold text-center uppercase ${accent.className} pb-5`}>
-                  Mi stack <br /> preferido
-                </h3>
-                <div className="text-xl md:text-3xl max-w-xl text-[#e2e2e2]">
-                  Me gusta empezar diseñando con {" "}
-                  <LinkPreview
-                    src="/figma.svg"
-                    height={100}
-                    width={60}
-                  >
-                    Figma,{" "}
-                  </LinkPreview>
-                  luego desarrollo el frontend y backend usando{" "}
-                  <LinkPreview
-                    src="/nextjs_logo_light.svg"
-                    height={100}
-                  >
-                    Next.js{" "}
-                  </LinkPreview>
-                  y aplico estilos con{" "}
-                  <LinkPreview
-                    src="/tailwindcss.svg"
-                    height={80}
-                    width={100}
-                  >
-                    Tailwind CSS.{" "}
-                  </LinkPreview>
-                  Para la base de datos, utilizo{" "}
-                  <LinkPreview
-                    src="/postgresql.svg"
-                    height={80}
-                    width={80}
-                  >
-                    PostgreSQL{" "}
-                  </LinkPreview>
-                  junto con{" "}
-                  <LinkPreview
-                    src="/prisma.svg"
-                    height={80}
-                    width={80}
-                  >
-                    Prisma.
-                  </LinkPreview>
-                </div>
+            <div>
+              <h3 className={`text-2xl md:text-5xl font-bold text-center uppercase ${accent.className} pb-5`}>
+                Landing <br />Pages
+              </h3>
+              <div className="flex items-center xl:items-start justify-center gap-y-10 flex-col">
+                {
+                  data.landingProjects.map((project, index) => (
+                    <ProjectItem
+                      project={project}
+                      key={index}
+                      setSelected={setSelected}
+                    />
+                  ))
+                }
               </div>
             </div>
           </div>
@@ -180,11 +101,65 @@ const Modal = ({ selected, setSelected }: {
             src={selected}
             width={800}
             height={400}
-            alt="Plato"
+            alt={"Imagen del proyecto ampliada"}
             className="rounded-md"
           />
         </div>
       </div>
     </div>
   )
+}
+
+const ProjectItem = ({ project, setSelected }: { project: Project, setSelected: (selected: Project["images"][number]) => void }) => {
+  return <div
+    className="flex flex-col items-center w-full text-center"
+  >
+    <div className="flex flex-col items-center">
+      {
+        project.url ? (
+          <a
+            href={project.url || ""}
+            target="_blank"
+            className="flex items-center justify-start gap-1 relative w-fit group"
+          >
+            <span className="w-full absolute h-[2px] bg-muted-foreground bottom-0" />
+            <h4 className="font-bold text-xl md:text-2xl group-hover:brightness-90">{project.title}</h4>
+            <MoveUpRightIcon className="w-4 h-4 group-hover:brightness-90" />
+          </a>
+        ) : (
+          <div
+            className="flex items-center justify-start gap-1 relative w-fit group"
+          >
+            <span className="w-full absolute h-[2px] bg-muted-foreground bottom-0" />
+            <h4 className="font-bold text-xl md:text-2xl group-hover:brightness-90">{project.title}</h4>
+          </div>
+        )
+      }
+
+      <p className="text-muted-foreground">
+        {project.description}
+      </p>
+    </div>
+    <div className="flex flex-col md:flex-row items-center gap-2 mt-3">
+      {
+        project.images.map((image, index) => (
+          <motion.img
+            layoutId={image}
+            key={index}
+            src={image}
+            width={200}
+            height={100}
+            alt={`Imagen del proyecto ${project.title}`}
+            className={cn("rounded-md shadow-md border-border border hover:cursor-pointer hover:shadow-zinc-700 transition-shadow duration-200", {
+              "md:-ml-12 -mt-4 md:mt-0": index > 0,
+            })}
+            style={{
+              rotate: index % 2 === 0 ? 3 : -3,
+            }}
+            onClick={() => setSelected(image)}
+          />
+        ))
+      }
+    </div>
+  </div>
 }

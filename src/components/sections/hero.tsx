@@ -3,7 +3,7 @@
 import { accent } from "@/styles/fonts";
 import { data } from "@/data/data";
 import { useRef } from "react";
-import { useScroll, useTransform, motion } from "framer-motion";
+import { useScroll, useTransform, motion } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { TextAnimate } from "../ui/text-animate";
 

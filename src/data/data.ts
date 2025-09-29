@@ -34,51 +34,66 @@ export const data = {
   projects: [
     {
       id: 1,
-      title: "Cuppy",
-      description: "Es mi agencia de diseño y desarrollo web",
+      title: "Plato",
+      description: "Menú digital para restaurantes",
       images: [
-        "/cuppy.webp",
+        "/projects/plato-1.webp",
+        "/projects/plato-2.webp",
+        "/projects/plato-3.webp",
       ],
-      url: "https://cuppyagenciaweb.com"
+      url: "https://github.com/FedericoLuna01/plato"
     },
     {
       id: 2,
-      title: "Vesper x Fede",
-      description: "Tema personalizado en base a Vesper",
-      images: [
-        "/vesperxfede.webp"
-      ],
-      url: "https://github.com/FedericoLuna01/vesper-fede"
-    },
-    {
-      id: 3,
       title: "YT Layout Customizer",
       description: "Extensión de Chrome para personalizar la interfaz de YouTube",
       images: [
-        "/yt-layout-customizer-1.webp",
-        "/yt-layout-customizer-2.webp",
-        "/yt-layout-customizer-3.webp",
+        "/projects/yt-layout-customizer-1.webp",
+        "/projects/yt-layout-customizer-2.webp",
+        "/projects/yt-layout-customizer-3.webp",
       ],
       url: "https://github.com/FedericoLuna01/yt-layout-customizer"
     },
     {
-      id: 4,
-      title: "Plato",
-      description: "Menú digital para restaurantes",
+      id: 3,
+      title: "Tripzy",
+      description: "Organizador/planeador de viajes",
       images: [
-        "/plato-1.webp",
-        "/plato-2.webp",
-        "/plato-3.webp",
+        "/projects/tripzy-1.webp",
+        "/projects/tripzy-2.webp",
+        "/projects/tripzy-3.webp",
+        "/projects/tripzy-4.webp",
       ],
+      url: "https://github.com/FedericoLuna01/tripzy"
+    },
+  ],
+  landingProjects: [
+    {
+      id: 1,
+      title: "Comuna de Zavalla",
+      description: "Sitio web institucional de la Comuna de Zavalla",
+      images: [
+        "/projects/landing-comuna.webp",
+      ],
+      url: "https://www.comunadezavalla.com"
     },
     {
-      id: 5,
-      title: "E-commerce CMS",
-      description: "CMS para e-commerce",
+      id: 2,
+      title: "Kuzacademy",
+      description: "Plataforma de cursos en línea de criptomonedas y blockchain",
       images: [
-        "/ecommerce-cms-1.webp",
-        "/ecommerce-cms-2.webp",
+        "/projects/landing-criptokuz.webp",
       ],
+      url: "https://www.kuzacademy.com/"
     },
+    {
+      id: 3,
+      title: "Maxitramit",
+      description: "Sitio web institucional de Maxitramit",
+      images: [
+        "/projects/landing-maxitramit.webp",
+      ],
+      url: "https://www.gestoriamaxitramit.com.ar/"
+    }
   ]
 }

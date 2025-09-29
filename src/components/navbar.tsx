@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { motion } from "framer-motion"
+import { motion } from "motion/react"
 import { Globe, Zap, BriefcaseBusinessIcon, SendIcon, CircleUserIcon } from "lucide-react"
 import { Button } from "./ui/button"
 

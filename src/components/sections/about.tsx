@@ -1,6 +1,6 @@
 "use client"
 import Image from 'next/image'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'motion/react'
 import { accent } from '@/styles/fonts'
 import { useRef } from 'react'
 import { Button } from '../ui/button'
@@ -43,10 +43,10 @@ const About = () => {
             <Button className='w-fit'
               asChild>
               <a
-                href="/FedericoLuna-CV.pdf"
-                download
+                href="https://drive.google.com/file/d/1o1vbbI7M_yXd18wspwfGc0JSSxORK2Ge/view?usp=sharing"
+                target='_blank'
               >
-                Descargar CV
+                Ver CV
               </a>
             </Button>
           </div>
